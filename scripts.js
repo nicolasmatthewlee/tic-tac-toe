@@ -1,4 +1,8 @@
 let turn_label_icon=document.querySelector('.turn-label-icon');
+let overlay=document.querySelector('.overlay');
+let game_result_modal=document.querySelector('.game-result-modal');
+let game_result_modal_text=document.querySelector('.game-result-modal-text');
+let game_result_modal_play_again=document.querySelector('.game-result-modal-play-again');
 
 // game properties
 let grid_values = new Array(9).fill(0);
@@ -71,11 +75,15 @@ let check_move = (event) => {
 
         // check if win
         if (check_win()) {
-            alert(`Player ${player?1:2} Wins!`);
+            overlay.classList.toggle('active');
+            game_result_modal.classList.toggle('active');
+            game_result_modal_text.textContent=`Player ${player?1:2} Wins!`
         } else {
             // check if grid is filled
             if (check_filled()) {
-                alert(`Tie Game!`);
+                overlay.classList.toggle('active');
+                game_result_modal.classList.toggle('active');
+                game_result_modal_text.textContent=`Tie Game!`
             }
         }
 
@@ -107,3 +115,10 @@ for (let i=0;i<9;i++) {
 // reset button
 let reset=document.querySelector('.reset-button');
 reset.addEventListener('click',game_reset);
+
+// play again button
+game_result_modal_play_again.addEventListener('click',()=>{
+    game_result_modal.classList.remove('active');
+    overlay.classList.remove('active');
+    game_reset();
+})

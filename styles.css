@@ -28,6 +28,25 @@ body {
     align-items: center;
 }
 
+.turn-label {
+    width: 100vw;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.turn-label-text {
+    font-weight: 700;
+}
+
+svg {
+    width: 50px;
+    fill: red;
+}
+
 .grid-container {
     --side-length: max(400px,min(calc(100vw - 60px),calc(100vh - 300px)));
     --gap: calc(var(--side-length) / 40);

@@ -42,7 +42,7 @@ body {
     font-weight: 700;
 }
 
-svg {
+.turn-label>svg {
     width: 50px;
     fill: red;
 }
@@ -64,6 +64,14 @@ svg {
 
 .grid-box {
     background-color: whitesmoke;
+}
+
+.marker {
+    --margin: 30px;
+    margin: var(--margin);
+    height: calc(100% - var(--margin) * 2);
+    width: calc(100% - var(--margin) * 2);
+    fill: red;
 }
 
 .reset-button {

@@ -42,9 +42,13 @@ body {
     font-weight: 700;
 }
 
-.turn-label>svg {
+.turn-label-icon {
     width: 50px;
     fill: red;
+}
+
+.turn-label-icon.player2 {
+    fill: orange;
 }
 
 .grid-container {
@@ -71,7 +75,14 @@ body {
     margin: var(--margin);
     height: calc(100% - var(--margin) * 2);
     width: calc(100% - var(--margin) * 2);
+}
+
+.marker.player1 {
     fill: red;
+}
+
+.marker.marker.player2 {
+    fill: orange;
 }
 
 .reset-button {

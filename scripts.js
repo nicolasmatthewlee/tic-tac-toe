@@ -23,6 +23,10 @@ let check_win = () => {
     return false;
 };
 
+let check_filled = () => {
+    return !grid_values.includes(0);
+};
+
 let check_move = (event) => {
     
     let index=event.target.dataset.index;
@@ -47,9 +51,14 @@ let check_move = (event) => {
         console.log(grid_values)
 
         // check if win
-        check_win();
-
-        // check if grid is filled
+        if (check_win()) {
+            alert(`Player ${player?1:2} Wins!`);
+        } else {
+            // check if grid is filled
+            if (check_filled()) {
+                alert(`Tie Game!`);
+            }
+        }
 
         // change player
         player=!player;

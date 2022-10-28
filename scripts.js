@@ -71,8 +71,6 @@ let check_move = (event) => {
         // update array
         grid_values[index]=player ? 1 : -1;
 
-        console.log(grid_values)
-
         // check if win
         if (check_win()) {
             overlay.classList.toggle('active');

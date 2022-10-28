@@ -23,8 +23,27 @@ let check_win = () => {
     return false;
 };
 
+// checks if grid is filled, returns true if filled
 let check_filled = () => {
     return !grid_values.includes(0);
+};
+
+// clears game
+let game_reset = () => {
+
+    // reset array
+    grid_values.fill(0);
+
+    // remove markers
+    markers=document.querySelectorAll('.marker');
+    for (let i=0;i<markers.length;i++) {
+        markers[i].remove();
+    }
+
+    // change back to player 1
+    player=true;
+    turn_label_icon.classList.remove('player2');
+
 };
 
 let check_move = (event) => {
@@ -84,3 +103,7 @@ for (let i=0;i<9;i++) {
     grid_container.appendChild(grid_box);
 
 }
+
+// reset button
+let reset=document.querySelector('.reset-button');
+reset.addEventListener('click',game_reset);

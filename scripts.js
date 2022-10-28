@@ -4,6 +4,25 @@ let turn_label_icon=document.querySelector('.turn-label-icon');
 let grid_values = new Array(9).fill(0);
 let player = true;
 
+// checks for a win, returns true if win
+let check_win = () => {
+    let win_sums=[
+        [0,1,2],[3,4,5],[6,7,8], // rows
+        [0,3,6],[1,4,7],[2,5,8], // columns
+        [0,4,8],[2,4,6] // diagonals
+    ]
+
+    for (let i=0;i<win_sums.length;i++) {
+        markers = win_sums[i].map((p)=>grid_values[p]);
+        sum = Math.abs(markers.reduce((pv,cv) => pv+cv,0));
+
+        if (sum==3) {
+            return true;
+        }
+    }
+    return false;
+};
+
 let check_move = (event) => {
     
     let index=event.target.dataset.index;
@@ -11,6 +30,7 @@ let check_move = (event) => {
     // if grid-box not occupied, place marker
     if (grid_values[index]==0) {
 
+        // add marker
         let xmlns="http://www.w3.org/2000/svg";
         let marker=document.createElementNS(xmlns,'svg');
         marker.setAttributeNS(null,'viewBox','0 0 24 24');
@@ -21,7 +41,13 @@ let check_move = (event) => {
 
         event.target.appendChild(marker);
 
+        // update array
+        grid_values[index]=player ? 1 : -1;
+
+        console.log(grid_values)
+
         // check if win
+        check_win();
 
         // check if grid is filled
 

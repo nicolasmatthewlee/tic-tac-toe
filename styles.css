@@ -107,6 +107,8 @@ body {
     align-items: center;
     padding: 10px;
     z-index: 1;
+    box-sizing: border-box;
+    margin-top: 10px;
 }
 
 .turn-label-text {
